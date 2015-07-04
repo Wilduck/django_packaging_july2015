@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'packaging_july2015.apps.kittens',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'packaging_july2015.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['packaging_july2015/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

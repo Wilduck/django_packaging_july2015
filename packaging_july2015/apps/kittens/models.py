@@ -1,4 +1,3 @@
-import json
 import random
 
 from django.conf import settings
@@ -26,8 +25,8 @@ class KittensManager(models.Manager):
         """Create a new kitten by querying /r/awww.
         """
         kitten = reddit_kitten()
-        if self.filter(url=url).exists():
-            return self.get(url=url)
+        if self.filter(url=kitten.url).exists():
+            return self.get(url=kitten.url)
         else:
             kitten_obj = self.create(
                 url=kitten.url,
