@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+REDDIT_USER_AGENT = 'packaging-kittens'
+KITTEN_FRESHNESS = 100
+
 # Application definition
 
 INSTALLED_APPS = (

@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <h1>Top Kittens!</h1>
+    {% for kitten in kittens %}
+    <div class="kitten">
+      <img src="{{ kitten.thumbnail }}">
+      <p>👍: {{ kitten.votes_up }}</p>
+      <p>👎: {{ kitten.votes_down }}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>

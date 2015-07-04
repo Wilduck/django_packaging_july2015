@@ -11,7 +11,8 @@ class KittenManager(models.Manager):
         """Get a kitten, either from the db, or a new one.
         """
         num_kittens = self.count()
-        if random.random() < (num_kittens / (num_kittens + 10.0)):
+        new_cutoff = (num_kittens / (num_kittens + settings.KITTEN_FRESHNESS))
+        if random.random() < new_cutoff:
             return self._rand_inst()
         else:
             return self.create_new()
