@@ -6,12 +6,12 @@ from django.db import models
 import praw
 
 
-class KittensManager(models.Manager):
+class KittenManager(models.Manager):
     def get_random(self):
         """Get a kitten, either from the db, or a new one.
         """
         num_kittens = self.count()
-        if random.random() > (num_kittens / (num_kittens + 100.0)):
+        if random.random() < (num_kittens / (num_kittens + 10.0)):
             return self._rand_inst()
         else:
             return self.create_new()
@@ -36,7 +36,7 @@ class KittensManager(models.Manager):
             return kitten_obj
 
 
-class Kittens(models.Model):
+class Kitten(models.Model):
     url = models.CharField(max_length=200, unique=True)
     thumbnail = models.CharField(max_length=200)
     title = models.CharField(max_length=200, unique=True)
@@ -44,7 +44,7 @@ class Kittens(models.Model):
     votes_down = models.PositiveIntegerField(default=0)
     added = models.DateTimeField(auto_now_add=True)
 
-    objects = KittensManager()
+    objects = KittenManager()
 
 
 def reddit_kitten():
