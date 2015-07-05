@@ -1,12 +1,14 @@
-<html>
-  <body>
-    <h1>Top Kittens!</h1>
-    {% for kitten in kittens %}
-    <div class="kitten">
-      <img src="{{ kitten.thumbnail }}">
-      <p>👍: {{ kitten.votes_up }}</p>
-      <p>👎: {{ kitten.votes_down }}</p>
-    </div>
-    {% endfor %}
-</body>
-</html>
+{% extends "kittens/base.html" %}
+
+{% block title%}Top Kittens{% endblock %}
+
+{% block content%}
+<h1 class="title">Top Kittens!</h1>
+{% for kitten in kittens %}
+<div class="box top">
+  <img class="float" src="{{ kitten.thumbnail }}">
+  <div class="button float">👍: {{ kitten.votes_up }}</div>
+  <div class="button float">👎: {{ kitten.votes_down }}</div>
+</div>
+{% endfor %}
+{% endblock %}

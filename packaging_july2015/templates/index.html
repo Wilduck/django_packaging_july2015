@@ -1,5 +1,9 @@
 <html>
 <body>
-  <h1>Hi!</h1>
+  <h1>Wecome To My Webpage</h1>
+  <ul>
+    <li>There are {{ kitten_count }} Kittens viewed and counting.
+    <li>See a <a href="{% url 'random-kitten' %}">random kitten</a>.
+    <li>See the <a href="{% url 'top-kittens' %}">top kittens</a>.
 </body>
 </html>

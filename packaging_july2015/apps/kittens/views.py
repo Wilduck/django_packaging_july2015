@@ -26,8 +26,8 @@ def kitten_down(request, *args, **context):
 
 
 def top_kittens(request, *args, **context):
-    top = Kitten.objects.extra(select={
-        'net_score': 'votes_up - votes_down'
-    }).extra(where=['net_score > 0'], order_by=['-net_score'])[0:10]
+    top = Kitten.objects.extra(
+        select={'net_score': 'votes_up - votes_down'}
+    ).extra(where=['net_score > 0'], order_by=['-net_score'])[0:10]
     context['kittens'] = top
     return render_to_response("kittens/top.html", context)
