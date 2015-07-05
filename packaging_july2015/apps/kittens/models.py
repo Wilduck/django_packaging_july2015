@@ -1,9 +1,9 @@
 import random
 
-from django.conf import settings
 from django.db import models
-
 import praw
+
+from . import constants
 
 
 class KittenManager(models.Manager):
@@ -11,7 +11,7 @@ class KittenManager(models.Manager):
         """Get a kitten, either from the db, or a new one.
         """
         num_kittens = self.count()
-        new_cutoff = (num_kittens / (num_kittens + settings.KITTEN_FRESHNESS))
+        new_cutoff = (num_kittens / (num_kittens + constants.KITTEN_FRESHNESS))
         if random.random() < new_cutoff:
             return self._rand_inst()
         else:
@@ -49,7 +49,7 @@ class Kitten(models.Model):
 
 
 def reddit_kitten():
-    reddit_api = praw.Reddit(user_agent=settings.REDDIT_USER_AGENT)
+    reddit_api = praw.Reddit(user_agent=constants.REDDIT_USER_AGENT)
     aww_subreddit = reddit_api.get_subreddit("aww")
     kitten_results = aww_subreddit.search("kitten", sort="new", limit=100)
     kittens = [k for k in kitten_results if k.thumbnail != 'self']
